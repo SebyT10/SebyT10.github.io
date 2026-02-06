@@ -1,57 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nature & Logic | Portfolio</title>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo">Nature & Logic</a>
+        <ul class="nav-links">
+            <li><a href="#" onclick="openTab(event, 'about')">About</a></li>
+            <li><a href="#" onclick="openTab(event, 'projects')">Projects</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Hobbies ▾</a>
+                <div class="dropdown-content">
+                    <a href="#" onclick="openTab(event, 'photography')">Photography</a>
+                    <a href="#" onclick="openTab(event, 'music')">Music</a>
+                </div>
+            </li>
+            <li><a href="#" onclick="openTab(event, 'sketches')">Sketches</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="tab-container">
     
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Playfair+Display:italic,wght@700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-</head>
-<body>
-
-<header>
-    <h1>Nature & Logic</h1>
-    <p>A collection of growth, code, and sketches.</p>
-</header>
-
-<div class="tab-container">
-    <nav class="tabs">
-        <button class="tab-btn active" onclick="openTab(event, 'projects')">Projects</button>
-        <button class="tab-btn" onclick="openTab(event, 'hobbies')">Hobbies</button>
-        <button class="tab-btn" onclick="openTab(event, 'sketches')">p5.js Sketches</button>
-    </nav>
-
-    <section id="projects" class="content-section active">
-        <h3>Featured Work</h3>
-        <div class="grid">
-            <div class="card"><h4>Project Alpha</h4><p>Eco-tracking app.</p></div>
-            <div class="card"><h4>Project Beta</h4><p>Nature-inspired UI kit.</p></div>
+    <section id="about" class="content-section active">
+        <div class="about-flex">
+            <div class="about-text">
+                <h2>Hello, I'm [Your Name]</h2>
+                <p>I thrive at the intersection of organic beauty and digital logic. Whether I'm capturing the stillness of a forest through a lens or layering textures in a track, I aim for balance.</p>
+            </div>
         </div>
     </section>
 
-    <section id="hobbies" class="content-section">
-        <h3>Beyond the Screen</h3>
-        <ul>
-            <li>Hiking & Trail Running</li>
-            <li>Ceramics</li>
-            <li>Forest Photography</li>
-        </ul>
+    <section id="photography" class="content-section">
+        <h3>Captured Moments</h3>
+        <div class="photo-gallery">
+            <div class="photo-placeholder">Your Nature Photo 1</div>
+            <div class="photo-placeholder">Your Nature Photo 2</div>
+            </div>
     </section>
 
-    <section id="sketches" class="content-section">
-        <h3>Generative Art</h3>
-        <div id="canvas-parent"></div>
-        <p class="sketch-hint"><i>Move your mouse to sway the branches</i></p>
+    <section id="music" class="content-section">
+        <h3>Sonic Textures</h3>
+        <p>Listen to my latest productions:</p>
+        <div class="music-player">
+            <div class="music-placeholder">Music Player Embed Here</div>
+        </div>
     </section>
-</div>
 
-<footer>&copy; 2024 Crafted with Sage & Clay</footer>
-
-<script src="js/main.js"></script>
-<script src="js/sketch.js"></script>
-</body>
-</html>
+    </main>
