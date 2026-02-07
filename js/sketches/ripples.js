@@ -7,7 +7,7 @@ const rippleSketch = (p) => {
     };
 
     p.draw = () => {
-        p.background(255); // Very light parchment
+        p.background(255);
         
         // Loop through ripples backwards to remove them safely
         for (let i = ripples.length - 1; i >= 0; i--) {
