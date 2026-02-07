@@ -106,16 +106,15 @@ body {
     padding: 0 20px 40px 20px;
     min-height: 80vh;
 }
-
+/*
 .content-section {
-    display: none;
     animation: fadeIn 0.8s ease;
 }
 
 .content-section.active {
     display: block;
 }
-
+*/
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
     color: var(--sage);
