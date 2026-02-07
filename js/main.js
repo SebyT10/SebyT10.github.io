@@ -1,40 +1,31 @@
-// --- TAB LOGIC ---
-function openTab(evt, tabName) {
-    // 1. Hide all content sections
-    const sections = document.querySelectorAll(".content-section");
-    sections.forEach(section => section.style.display = "none");
-
-    // 2. Show the selected section
-    const activeSection = document.getElementById(tabName);
-    if (activeSection) {
-        activeSection.style.display = "block";
-        // Reset animation
-        activeSection.style.animation = 'none';
-        activeSection.offsetHeight; /* trigger reflow */
-        activeSection.style.animation = 'fadeIn 0.8s ease';
-    }
-    
-    // 3. Scroll to top (optional UX improvement)
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-
 // --- SKETCH MANAGER ---
 let currentP5Instance = null;
 
 function changeSketch(sketchName) {
-    // 1. Remove the old sketch if it exists
+    // SAFETY CHECK: 
+    // If we are on the "About" or "Projects" page, this element won't exist.
+    // We stop the function here to prevent errors.
+    const container = document.getElementById('canvas-parent');
+    if (!container) return;
+
+    // 1. Remove the old sketch if it exists (prevents memory leaks)
     if (currentP5Instance) {
         currentP5Instance.remove();
     }
 
     // 2. Instantiate the new sketch
+    // (This assumes treeSketch and rippleSketch are defined in your other JS files)
     if (sketchName === 'tree') {
-        currentP5Instance = new p5(treeSketch, 'canvas-parent');
-        updateHint("Move mouse left/right to sway the wind.");
+        // Check if the sketch function actually exists before running
+        if (typeof treeSketch !== 'undefined') {
+            currentP5Instance = new p5(treeSketch, 'canvas-parent');
+            updateHint("Move mouse left/right to sway the wind.");
+        }
     } else if (sketchName === 'ripples') {
-        currentP5Instance = new p5(rippleSketch, 'canvas-parent');
-        updateHint("Click anywhere to create ripples.");
+        if (typeof rippleSketch !== 'undefined') {
+            currentP5Instance = new p5(rippleSketch, 'canvas-parent');
+            updateHint("Click anywhere to create ripples.");
+        }
     }
 }
 
@@ -43,8 +34,13 @@ function updateHint(text) {
     if (hint) hint.innerText = text;
 }
 
-// Load default sketch on page load
-window.onload = () => {
-    // Start with the Tree sketch
-    changeSketch('tree');
-};
+// --- INITIALIZATION ---
+// Use DOMContentLoaded to ensure HTML is ready
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Only attempt to load the default sketch if we are on the Sketches page
+    if (document.getElementById('canvas-parent')) {
+        changeSketch('tree');
+    }
+
+});
