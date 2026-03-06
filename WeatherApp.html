@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="weather-bg">
+    <div class="container">
+        <div class="search-box">
+            <input type="text" id="city-input" placeholder="Enter city name...">
+            <button id="search-btn">Search</button>
+        </div>
+
+        <p id="loading-text" class="hidden">Updating...</p>
+
+        <div class="main-weather">
+            <h1 id="current-city">Loading...</h1>
+            <img id="weather-icon" src="" alt="">
+            <div id="temperature">--°C</div>
+            <div id="condition">--</div>
+        </div>
+
+        <div class="forecast-container">
+            <h3>Upcoming Forecast (3-Hour)</h3>
+            <div id="forecast-list">
+                </div>
+        </div>
+
+        <div class="refresh-toggle">
+            <input type="checkbox" id="auto-refresh">
+            <label for="auto-refresh">Auto-Refresh (5 mins)</label>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
